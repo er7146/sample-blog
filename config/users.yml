@@ -1,0 +1,8 @@
+# users.yml
+one:
+  email: user<%= 1 %>@test.com
+  # other fields...
+
+two:
+  email: user<%= 2 %>@test.com
+  # other fields...

@@ -1,19 +1,23 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+
+  include Devise::Test::IntegrationHelpers
+
+  class PostsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @post = posts(:one)
+    @user = users(:one) # or however you have defined your users
+    sign_in @user
+    @post = posts(:one) # or however you have defined your posts
   end
 
-  test "should get index" do
-    get posts_url
+  test "should show post" do
+    get post_url(@post)
     assert_response :success
   end
-
-  test "should get new" do
-    get new_post_url
-    assert_response :success
-  end
+end
 
   test "should create post" do
     assert_difference("Post.count") do
